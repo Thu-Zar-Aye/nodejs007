@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partial/head %>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<!-- Logo Header -->
+			 <% include ../partial/header %>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			 <% include ../partial/navbar %>
+										<!-- End Navbar -->
+
+		<!-- Sidebar -->
+		 <% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Post Add</div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-8 col-lg-8">
+                    <form  action="/posts/postadd" method="post" >
+
+                    <div class="form-group">
+                      <label for="name">Title</label>
+                      <input type="text" class="form-control"  name="title" id="title"  placeholder="Enter title">
+                    </div>
+
+                  <div class="form-group">
+                    <label for="content">Content</label>
+                    <input type="text" class="form-control"  name="content" id="content" placeholder="Enter content" >
+
+                  </div>
+                  <div class="form-group">
+                    <label for="author">Author</label>
+                    <select class="form-control form-control-lg" id="author" name="author">
+
+                      <% for(var i=0; i<users.length; i++){%>
+                        <option value="<%=users[i]._id%>"> <%=users[i].name%></option>
+                      <%}%>
+
+
+                    </select>
+                  </div>
+								</div>
+							</div>
+						</div>
+                  <div class="card-action">
+                    <button type="submit"  class="btn btn-success">Submit</button>
+                    <button class="btn btn-danger">Cancel</button>
+                  </div>
+      </div>
+
+	 </div>
+ </div>
+</div>
+
+     </div>
+  </div>
+									<% include ../partial/script.ejs %>
+							</body>
+<script src="/javascripts/jquery-3.4.1.js" charset="utf-8"></script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Post Add</title>
+  </head>
+  <body>
+    <h1>Post Add page</h1>
+    <form  action="/posts/postadd" method="post">
+      <label for="title">Title</label>
+      <input type="text" name="title" value="" id="title"><p>
+        <label for="content">Content </label>
+        <input type="text" name="content" value="" id="content"><p>
+          <label for="author">Author</label>
+<select  name="author" id="author">
+  <% for(var i=0; i<users.length; i++){%>
+    <option value="<%=users[i]._id%>"> <%=users[i].name%></option>
+  <%}%>
+
+</select>
+          <p>
+            <input type="submit" name="" value="Submit">
+    </form>
+  </body>
+</html> -->

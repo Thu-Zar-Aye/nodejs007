@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partial/head %>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<% include ../partial/header %>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			<% include ../partial/navbar %>
+										<!-- End Navbar -->
+
+		<!-- Sidebar -->
+		<% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-4">
+						<div class="card card-post card-round">
+							<img class="card-img-top" src="/assets/img/blogpost.jpg" alt="Card image cap">
+							<div class="card-body">
+								<div class="d-flex">
+									<div class="avatar">
+										<img src="/assets/img/profile2.jpg" alt="..." class="avatar-img rounded-circle">
+									</div>
+									<div class="info-post ml-2">
+										<p class="username"><%= post.author.name %></p>
+										<p class="date text-muted"><%= post.author.email %></p>
+									</div>
+								</div>
+								<div class="separator-solid"></div>
+								<p class="card-category text-info mb-1"><a href="#">Design</a></p>
+								<h3 class="card-title">
+									<a href="#">
+										<%= post.title %>
+											</a>
+								</h3>
+								<p class="card-text"><%= post.content %></p>
+								<a href="/posts/postupdate/<%= post._id %>" class="btn btn-primary btn-rounded btn-sm">Update</a>
+								<button type="button" name="button" onclick="del();" class="btn btn-primary btn-rounded btn-sm">Delete</button>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+</div>
+
+
+		</div>
+
+<% include ../partial/footer %>
+	</div>
+	<!--  End Core JS Files   -->
+	<% include ../partial/script %>
+</body>
+<script type="text/javascript">
+function del(){
+var a=confirm("Are you sure for delete!!!");
+if(a){
+  location.href="/posts/postdelete/<%=post._id %>";
+}
+}
+</script>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Post Detail</title>
+  </head>
+  <body>
+    <h1>Post detail</h1>
+    Title:<%= post.title %><p>
+    Content:<%= post.content %><p>
+    Author Name:<%= post.author.name %><p>
+      Author Email:<%= post.author.email %><p>
+
+  <a href="/posts/postupdate/<%= post._id %>">
+  <button type="button" name="button">Update</button></a>
+  <button type="button" name="button" onclick="del();">Delete</button>
+
+  </body>
+  <script type="text/javascript">
+  function del(){
+  var a=confirm("Are you sure for delete!!!");
+  if(a){
+    location.href="/posts/postdelete/<%=post._id %>";
+  }
+}
+  </script>
+ </html>
