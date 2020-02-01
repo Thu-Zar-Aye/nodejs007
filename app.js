@@ -5,10 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose=require('mongoose');
 var session=require('express-session');
-
+var apiserverrouter=require('./api/routes/users.js');
+var apiadmin=require('./api/routes/Admin.js');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/post');
+
 var app = express();
 
 // view engine setup
@@ -25,7 +27,7 @@ app.use(session({
   resave:false,
   saveUninitialized:true
 }))
-mongoose.connect('mongodb://127.0.0.1/mynodejs007');
+// mongoose.connect('mongodb://127.0.0.1/mynodejs007');
 mongoose.connect('mongodb+srv://thuzar:thuzar1234@nodejs007-9yam6.mongodb.net/test?retryWrites=true&w=majority');
 var db=mongoose.connection;
 db.on('error',console.error.bind(console,'MongoDB connection error:'));
@@ -33,7 +35,11 @@ app.use(function(req,res,next){
   res.locals.user=req.session.user;
   next();
 })
+
+
 app.use('/', indexRouter);
+app.use('/api',apiadmin);
+app.use('/api/users',apiserverrouter);
 app.use(function(req,res,next){
   if(req.session.user){
     next();
