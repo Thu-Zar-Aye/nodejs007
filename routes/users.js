@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User=require('../model/User');
+var Post=require('../model/Post');
 var bcrypt=require('bcryptjs');
 
 /* GET users listing. */
@@ -34,7 +35,12 @@ router.get('/userdetail/:id',function(req,res,next){
   User.findById(req.params.id,function(err,rtn){
     if (err)throw err;
     console.log(rtn);
-    res.render('user/user_detail',{user:rtn});
+    Post.find({author:req.params.id},function(err2,rtn2){
+      if(err2)throw err;
+      console.log(err2);
+        res.render('user/user_detail',{user:rtn,posts:rtn2});
+    })
+
   })
 })
 router.get('/userupdate/:uid',function(req,res,next){

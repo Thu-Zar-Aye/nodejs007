@@ -1,4 +1,92 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partial/head %>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<!-- Logo Header -->
+			 <% include ../partial/header %>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			 <% include ../partial/navbar %>
+										<!-- End Navbar -->
+
+		<!-- Sidebar -->
+		 <% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Post Update</div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-8 col-lg-8">
+                  <form  action="/posts/postupdate" method="post">
+                    <input type="hidden" name="id" value="<%= post._id%>">
+
+                    <div class="form-group">
+                      <label for="name">Title</label>
+                      <input type="text" class="form-control"  name="title" id="title" value="<%= post.title %>">
+                    </div>
+
+                  <div class="form-group">
+                    <label for="content">Content</label>
+                    <input type="text" class="form-control"  name="content" id="content" value="<%= post.content %>" >
+
+                  </div>
+                  <div class="form-group">
+                    <label for="author">Author</label>
+                    <select  name="author" id="author">
+                      <% for(var i=0; i<users.length; i++){%>
+                        <option value="<%= users[i]._id %>"<%= (users[i]._id.equals(post.author))? "selected":""%>> <%=users[i].name%></option>
+                      <%  }%>
+
+                    </select>
+                  </div>
+								</div>
+							</div>
+						</div>
+                  <div class="card-action">
+                    <button type="submit"  class="btn btn-success">Submit</button>
+                    <button class="btn btn-danger">Cancel</button>
+                  </div>
+      </div>
+
+	 </div>
+ </div>
+</div>
+
+     </div>
+  </div>
+									<% include ../partial/script.ejs %>
+							</body>
+<script src="/javascripts/jquery-3.4.1.js" charset="utf-8"></script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -22,4 +110,4 @@
             <input type="submit" name="" value="Submit">
     </form>
   </body>
-</html>
+</html> -->
